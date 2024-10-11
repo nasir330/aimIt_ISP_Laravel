@@ -1,0 +1,256 @@
+:root {
+    --base-bg-color: #1E1E2E;
+    --form-bg-color: #27293D;
+    --themeBtn1-color: #3B3363;
+    --themeIcon-color: #cc5de8;
+}
+
+.dt-scroll-body::-webkit-scrollbar {
+    display: none;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.base-bg {
+    color: #fff;
+    background-color: var(--base-bg-color);
+}
+
+.theme-btn {
+    border: 1px solid #222;
+    color: #fff;
+    background-color: var(--themeBtn1-color);
+}
+
+.theme-btn:hover {
+    border: 1px solid var(--themeBtn1-color);
+    color: white;
+    background-color: transparent;
+}
+
+.theme-border {
+    background-color: var(--form-bg-color);
+    border: 1px solid var(--themeBtn1-color);
+    border-radius: 10px 10px 0 0;
+}
+
+.window-icon {
+    margin-top: 50px;
+    position: fixed;
+}
+
+.close-icon {
+    font-size: 24px;
+}
+
+.close-icon:hover {
+    transition: 0.1s;
+    transform: scale(1.2);
+}
+
+.icon-section::-webkit-scrollbar {
+    display: none;
+}
+
+.icon:hover {
+    cursor: pointer;
+    transform: scale(0.8);
+    /* Scales the icon by 5% on hover */
+}
+
+/* =========== Random window============*/
+.random-window::-webkit-scrollbar {
+    display: none;
+}
+
+.random-window {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/*###################### Large device #####################################*/
+@media only screen and (min-width: 1025px) {
+    .icon {
+        width: 80px;
+        height: 80px;
+        color: var(--themeIcon-color);
+        transition: transform 0.2s ease;
+        /* Adds smooth transition */
+    }
+    .actionIcon {
+       font-size: 16px;
+        color: var(--themeIcon-color);       
+    }
+    .actionIcon:hover {      
+        color: #fff;       
+    }
+
+    .menu-window {
+        opacity: 0;
+        transform: scale(0.7);
+        /* Scale down initially */
+        transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+        width: 50%;
+        height: 50vh;
+        border-radius: 10px 10px 10px 10px;
+        border: 1px solid #3B3363;
+    }
+
+    .menu-window.show {
+        opacity: 1;
+        transform: scale(1);
+        /* Full size on pop-up */
+    }
+
+    .content-window {
+        opacity: 0;
+        transform: scale(0.7);
+        /* Scale down initially */
+        transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+        height: 90vh;
+        width: 90%;
+        /*background-color: red;*/
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    .content-window.show {
+        opacity: 1;
+        transform: scale(1);
+        /* Full size on pop-up */
+    }
+    .dt-scroll-body{
+        height:500px;
+    }
+
+
+}
+
+/*###################### small device #####################################*/
+@media only screen and (max-width: 600px) {
+    .icon {
+        width: 50px;
+        height: 50px;
+        color: var(--themeIcon-color);
+        transition: transform 0.2s ease;
+    }
+    .actionIcon {
+        font-size: 16px;
+         color: var(--themeIcon-color);       
+     }
+     .actionIcon:hover {      
+         color: #fff;       
+     }
+    /* =========== Random window============*/
+    .random-window::-webkit-scrollbar {
+        display: none;
+    }
+
+    .random-window {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .menu-window {
+        opacity: 0;
+        transform: scale(0.7);
+        /* Scale down initially */
+        transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+        width: 90%;
+        height: 70vh;
+        border-radius: 10px 10px 10px 10px;
+        border: 1px solid #3B3363;
+    }
+
+    .menu-window.show {
+        opacity: 1;
+        transform: scale(1);
+        /* Full size on pop-up */
+    }
+    .content-window {
+        opacity: 0;
+        transform: scale(0.7);
+        /* Scale down initially */
+        transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+        height: 80vh;
+        width: 80%;
+        /*background-color: red;*/
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    .content-window.show {
+        opacity: 1;
+        transform: scale(1);
+        /* Full size on pop-up */
+    }
+    .dt-scroll-body{
+        height:480px;
+    }
+}
+
+/*###################### tablet device #####################################*/
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .icon {
+        width: 80px;
+        height: 80px;
+        color: var(--themeIcon-color);
+        transition: transform 0.2s ease;
+        /* Adds smooth transition */
+    }
+    .actionIcon {
+        font-size: 16px;
+         color: var(--themeIcon-color);       
+     }
+     .actionIcon:hover {      
+         color: #fff;       
+     }
+
+    .menu-window {
+        opacity: 0;
+        transform: scale(0.7);
+        /* Scale down initially */
+        transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+        width: 70%;
+        height: 65vh;
+        border-radius: 10px 10px 10px 10px;
+        border: 1px solid #3B3363;
+    }
+
+    .menu-window.show {
+        opacity: 1;
+        transform: scale(1);
+        /* Full size on pop-up */
+    }
+
+    .content-window {
+        opacity: 0;
+        transform: scale(0.7);
+        /* Scale down initially */
+        transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+        height: 90vh;
+        width: 90%;
+        /*background-color: red;*/
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    .content-window.show {
+        opacity: 1;
+        transform: scale(1);
+        /* Full size on pop-up */
+    }
+    .dt-scroll-body{
+        height:600px;
+    }
+}

@@ -1,0 +1,77 @@
+{% block randomwindow %}
+<div id="randomWindow" class="random-window d-flex justify-content-center align-items-center">
+	<!-- content window start -->
+	<div class="col-md-10 content-window base-bg">
+		<!-- window close button -->
+		<div class="col d-flex justify-content-end">
+			<button class="close-button c-close bg-transparent" hx-get="{% url 'packages-list' %}" hx-target="#randomWindow" hx-swap="outerHTML transition:true" hx-push-url="true">
+				<i id="raw-close" class="fas fa-times text-danger"></i>
+			</button>
+		</div>
+		<h4 class="ms-5 mx-auto">Edit Package</h4>
+		<form hx-post="{% url 'update-package' %}" class="ml-2">
+            {% csrf_token %}
+            <div class="d-flex justify-content-around mb-2">
+				<div class="col-md-5 ms-4">
+					<label for="package_name" class="form-label mb-0">Package Name</label>
+                    <input name="package_id" value="{{ package.id }}" hidden>
+					<input type="text" id="package_name" name="package_name" value="{{ package.package_name }}" class="form-control" placeholder="Enter Enter Package Name" required>
+				</div>
+				<div class="col-md-5 ms-4">
+					<label for="package_price" class="form-label mb-0">Package Price</label>
+					<input type="text" id="package_price" name="package_price" value="{{ package.package_price }}" class="form-control" placeholder="Enter Package Price" required>
+				</div>
+			</div>
+			<div class="d-flex justify-content-around mb-2">
+				<div class="col-md-5 ms-4">
+					<label for="account_type" class="form-label mb-0">Account Type</label>
+					<select name="account_type" id="account_type" class="form-control">
+						<option value="">Select Account Type</option>
+                        {% for account_type in account_types %}
+                            <option value="{{ account_type.service_name }}" {% if package.account_type.id == account_type.id %}
+                                selected
+                            {% endif %} >
+                                {{ account_type.service_show_name }}
+                            </option>
+                        {% endfor %}
+					</select>
+				</div>
+				<div class="col-md-5 ms-4">
+					<label for="duration_type" class="form-label mb-0">Duration Type</label>
+					<select name="duration_type" id="duration_type" class="form-control">
+						<option value="">Select Duration Type</option>
+                        {% for package_type in package_types %}
+                            <option value="{{ package_type.package_duration_name }}" {% if package.package_duration_type.id == package_type.id %}
+                            	selected
+                            {% endif %} 
+                            >
+                                {{ package_type.package_duration_show_name }}
+                            </option>
+                        {% endfor %}
+					</select>
+				</div>
+			</div>
+			<div class="d-flex justify-content-around mb-2">
+				<div class="col-md-5 ms-4">
+					<label for="duration_value" class="form-label mb-0">Duration Value</label>
+					<input type="text" id="duration_value" name="duration_value" value="{{ package.package_duration }}" class="form-control" placeholder="Enter duration_value" required>
+				</div>
+				<div class="col-md-5 ms-4">
+					<label for="allowed_device" class="form-label mb-0">Allowed Device</label>
+					<input type="text" id="allowed_device" name="allowed_device" value="{{ package.max_device_number }}" class="form-control" placeholder="Enter Allowed Device" required>
+				</div>
+			</div>
+			<div class="d-flex justify-content-around mb-2">
+				<div class="col-md-2 ms-4 mt-4">
+					<div class="input-group mb-2">
+						<button type="submit" class="btn theme-btn form-control
+                       text-uppercase">Update</button>
+					</div>
+				</div>
+				<div class="col-md-8 ms-4"></div>
+			</div>
+		</form>
+	</div>
+	<!-- content window end -->
+</div>
+{% endblock randomwindow %}
