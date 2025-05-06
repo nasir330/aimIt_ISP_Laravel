@@ -13,17 +13,19 @@
         </div>
 
         <div class="d-flex justify-content-around align-items-center vh-100 icon-window">
-            <div class="col-auto text-center" hx-get="{% url 'support-user' %}" hx-push-url="true" hx-target="#randomWindow">              
-                <a href="{{ route('supportsearch') }}" hx-push-url="true" hx-target="#randomWindow" hx-swap="outerHTML transition:true">                   
-                    <i class="icon fa-thin fa-user-magnifying-glass"></i>
-                    <p>User Search</p>
+            <div class="col-auto text-center" hx-get="{% url 'add-router' %}" hx-push-url="true" hx-target="#randomWindow">
+            <a href="{{ route('addrouter') }}" hx-push-url="true" hx-target="#randomWindow" hx-swap="outerHTML transition:true">                    
+            <i class="icon fa-thin fa-router"></i>                  
+                    <p>Add Routers</p>
                 </a>
+               
             </div>
-            <div class="col-auto text-center" hx-get="{% url 'user-report' %}" hx-push-url="true" hx-target="#randomWindow">              
-                <a href="{{ route('userreport') }}" hx-push-url="true" hx-target="#randomWindow" hx-swap="outerHTML transition:true">
-                <i class="icon fa-thin fa-folder-user"></i>
-                    <p>User Report</p>
+            <div class="col-auto text-center" hx-get="{% url 'routers-list' %}" hx-push-url="true" hx-target="#randomWindow">               
+                <a href="{{ route('routerslist') }}" hx-push-url="true" hx-target="#randomWindow" hx-swap="outerHTML transition:true"> 
+                    <i class="icon fa-thin fa-list"></i>                 
+                    <p>Routers List</p>
                 </a>
+               
             </div>
         </div>
     </div>

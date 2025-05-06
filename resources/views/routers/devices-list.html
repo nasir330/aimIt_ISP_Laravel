@@ -1,0 +1,45 @@
+{% block randomwindow %}
+<div id="randomWindow" class="random-window d-flex justify-content-center align-items-center">
+	<!-- content window start -->
+	<div class="col-md-10 content-window base-bg">
+		<!-- window close button -->
+		<div class="col d-flex justify-content-end">
+			<button class="close-button c-close bg-transparent" hx-get="{% url 'router-control-menu' id %}" hx-target="#randomWindow" hx-swap="outerHTML transition:true" hx-push-url="true">
+				<i id="raw-close" class="fas fa-times text-danger"></i>
+			</button>
+		</div>
+		<h4 class="ms-md-5 mx-auto">Access Points List</h4>
+        <h6 class="ms-md-5 mx-auto text-info-emphasis">Total AP: {{ access_points|length }}</h6>
+		<!-- Access Points list table start -->
+		<div class="px-2">
+			<table id="nonOrderListAble" class="text-nowrap w-100">
+				<thead>
+					<tr>
+						<th data-priority="1" style="border-radius:5px 0px 0px 0px;"> SL No. </th>
+                        <th>Device name</th>
+                        <th>IP address</th>
+                        <th>Mac Address</th>
+                        <th data-priority="2" style="border-radius:0px 5px 0px 0px;">Up Time</th>
+					</tr>
+				</thead>
+				<tbody class="table-light text-center text-dark">
+                {% for access_point in access_points %}
+                    <tr>
+						<td>
+							<input type="checkbox" id="check-item" name="check-item">
+							{{ forloop.counter }}
+						</td>
+                        <td>{{ access_point.host_name }}</td>
+                        <td>{{ access_point.address }}</td>
+                        <td>{{ access_point.mac_address }}</td>
+                        <td>{{ access_point.last_seen }}</td>
+					</tr>
+                {% endfor %}
+                </tbody>
+			</table>
+		</div>
+		<!-- Access Points list table end -->
+	</div>
+	<!-- content window end -->
+</div>
+{% endblock randomwindow %}

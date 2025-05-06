@@ -95,6 +95,30 @@
             transform: translateX(0);
             /* Move the element back to its original position */
         }
+
+        @media only screen and (max-width: 600px) {
+            .landing {
+                display: none;
+            }
+            .authCard {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1024px) {
+            .landing {
+                position: absolute;
+            }
+
+            .authCard {
+                width: 100%;
+            }
+
+            form {
+                padding: 0 20% 0 20%;
+            }
+
+        }
     </style>
 </head>
 
@@ -105,7 +129,7 @@
                 <h1>Welcome To</h1>
                 <h3>Infinity</h3>
             </div>
-            <div class="col-md-3 login-bg d-flex justify-content-center  flex-column align-items-center text-center vh-100 p-0">
+            <div class="authCard login-bg d-flex justify-content-center  flex-column align-items-center text-center vh-100 px-4">
                 <div>
                     <img class="logo" src="staticfiles/images/logo.png" alt="Infinity">
                 </div>
@@ -113,7 +137,7 @@
                     <h2>Welcome To</h2>
                     <h5>Infinity</h5>
                 </div>
-                <form class="mt-2" action="{{route('dashboard')}}" method="post">
+                <form class="col-12 mt-2" action="{{route('dashboard')}}" method="post">
                     @csrf
                     <div class="input-group mb-2">
                         <div class="input-group-text">

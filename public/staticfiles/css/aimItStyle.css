@@ -20,15 +20,17 @@ a {
 }
 
 .theme-btn {
-    border: 1px solid #222;
+    border: 1px solid var(--themeBtn1-color);
+    height: inherit;
     color: #fff;
-    background-color: var(--themeBtn1-color);
+    background-color: transparent;
+   
 }
 
 .theme-btn:hover {
-    border: 1px solid var(--themeBtn1-color);
+   border:1px solid #222;
     color: white;
-    background-color: transparent;
+    background-color: var(--themeBtn1-color);
 }
 
 .theme-border {
@@ -99,7 +101,7 @@ a {
         /* Scale down initially */
         transition: transform 0.1s ease-out, opacity 0.1s ease-out;
         width: 50%;
-        height: 50vh;
+        height: 60vh;
         border-radius: 10px 10px 10px 10px;
         border: 1px solid #3B3363;
     }
@@ -184,8 +186,8 @@ a {
         transform: scale(0.7);
         /* Scale down initially */
         transition: transform 0.1s ease-out, opacity 0.1s ease-out;
-        height: 80vh;
-        width: 80%;
+        height: 90vh;
+        width: 90%;
         /*background-color: red;*/
         border-radius: 10px 10px 10px 10px;
     }

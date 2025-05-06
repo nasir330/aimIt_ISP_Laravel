@@ -1,0 +1,35 @@
+{% block randomwindow %}
+<div id="randomWindow" class="random-window d-flex justify-content-center align-items-center">
+	<!-- content window start -->
+	<div class="col-md-10 content-window base-bg">
+		<!-- window close button -->
+		<div class="col d-flex justify-content-end">
+			<button class="close-button c-close bg-transparent" hx-get="{% url 'managers-list' %}" hx-target="#randomWindow" hx-swap="outerHTML transition:true" hx-push-url="true">
+				<i id="raw-close" class="fas fa-times text-danger"></i>
+			</button>
+		</div>
+		<h4 class="ms-5 mx-auto">Manager {{ manager }} Permissions</h4>
+		<form hx-post="{% url 'add-managers-permissions' %}" class="ml-2" autocomplete="off">
+            {% csrf_token %}
+            <div class="d-flex justify-content-start flex-wrap mb-2">
+                {% for f in form %}
+                <div class="col-6 col-md-3 col-sm-6">
+                    <label class="col-10" for="{{ f.label }}">{{ f.label }}</label>
+                    <span>{{ f }}</span>
+                </div>
+                {% endfor %}
+            </div>
+			<div class="d-flex justify-content-around mb-2">
+				<div class="col-md-2 ms-4 mt-4">
+					<div class="input-group mb-2">
+						<button type="submit" class="btn theme-btn form-control
+                       text-uppercase">Submit</button>
+					</div>
+				</div>
+				<div class="col-md-8 ms-4"></div>
+			</div>
+		</form>
+	</div>
+	<!-- content window end -->
+</div>
+{% endblock randomwindow %}

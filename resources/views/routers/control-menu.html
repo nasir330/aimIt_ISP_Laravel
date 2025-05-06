@@ -1,0 +1,31 @@
+{% block randomwindow %}
+<div id="randomWindow" class="random-window d-flex justify-content-center align-items-center">
+    <div class="col-6 menu-window base-bg d-flex flex-column">
+        <!-- window close button -->
+        <div class="col d-flex justify-content-end">
+            <button class="close-button c-close bg-transparent" hx-get="{% url 'routers-list' %}" hx-target="#randomWindow" hx-swap="outerHTML transition:true" hx-push-url="true">
+                <i id="raw-close" class="fas fa-times text-danger"></i>
+            </button>
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center vh-100 icon-window flex-wrap">
+            <div class="col-md-6 text-center" hx-get="{% url 'router-online-users-list' id %}" hx-target="#randomWindow" hx-push-url="true">
+                <i class="ci ci-user dash-icon"></i>
+                <p>User List</p>
+            </div>
+            <div class="col-md-6 text-center" hx-get="{% url 'router-devices-list' id %}" hx-target="#randomWindow" hx-push-url="true">
+                <i class="ci ci-device dash-icon"></i>
+                <p>Device List</p>
+            </div>
+            <div class="col-md-6 text-center" hx-get="{% url 'router-services-list' id %}" hx-target="#randomWindow" hx-push-url="true">
+                <i class="ci ci-wireless dash-icon"></i>
+                <p>Service List</p>
+            </div>
+            <div class="col-md-6 text-center" hx-get="{% url 'router-mac-users-list' id %}" hx-target="#randomWindow" hx-push-url="true">
+                <i class="ci ci-mac dash-icon"></i>
+                <p>Mac. User List</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock randomwindow %}

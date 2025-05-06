@@ -1,0 +1,32 @@
+{% block randomwindow %}
+<table id="orderListAble" class="text-dark no-border display nowrap" style="width: 100%">
+	<thead>
+		<tr>
+			<th data-priority="1">Manager</th>
+			<th>Total ticket</th>
+			<th>Expired ticket</th>
+			<th>Active ticket</th>
+			<th>Unused ticket</th>
+			<th>Total Sell Amount</th>
+		</tr>
+	</thead>
+    {% if totaltickets != 0 %}
+        <tbody class="table-light">
+            <tr>
+                <td class="text-center">{{ manager }}</td>
+                <td class="text-center">{{ totaltickets }}</td>
+                <td class="text-center"></td>
+                <td class="text-center">{{ activetickets }}</td>
+                <td class="text-center">{{ unusedtickets }}</td>
+                <td class="text-center">{% widthratio activetickets 1 30 %}</td>
+            </tr>
+        </tbody>
+    {% else %}
+        <tbody class="table-light">
+            <tr>
+                <td colspan="6" class="text-center">No Tickets are available.</td>
+            </tr>
+        </tbody>
+    {% endif %}
+</table>
+{% endblock randomwindow %}

@@ -1,0 +1,24 @@
+{% block randomwindow %}
+<div id="randomWindow" class="random-window d-flex justify-content-center align-items-center">
+    <div class="col-6 menu-window base-bg d-flex flex-column">
+        <!-- window close button -->
+        <div class="col d-flex justify-content-end">
+            <button class="close-button c-close bg-transparent" hx-get="{% url 'router-control-menu' id %}" hx-target="body" hx-swap="outerHTML transition:true" hx-push-url="true">
+                <i id="raw-close" class="fas fa-times text-danger"></i>
+            </button>
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center vh-100 icon-window">
+            <h1>Under Construction</h1>
+{#            <div class="col-auto text-center" hx-get="{% url 'add-router' %}" hx-push-url="true" hx-target="#randomWindow">#}
+{#                <i class="ci ci-router dash-icon"></i>#}
+{#                <p>Add Routers</p>#}
+{#            </div>#}
+{#            <div class="col-auto text-center" hx-get="{% url 'routers-list' %}" hx-push-url="true" hx-target="#randomWindow">#}
+{#                <i class="ci ci-list dash-icon"></i>#}
+{#                <p>Routers List</p>#}
+{#            </div>#}
+        </div>
+    </div>
+</div>
+{% endblock randomwindow %}

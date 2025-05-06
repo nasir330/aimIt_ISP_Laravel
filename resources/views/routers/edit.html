@@ -1,0 +1,58 @@
+{% block randomwindow %}
+<div id="randomWindow" class="random-window d-flex justify-content-center align-items-center">
+	<!-- content window start -->
+	<div class="col-md-10 content-window base-bg">
+		<!-- window close button -->
+		<div class="col d-flex justify-content-end">
+			<button class="close-button c-close bg-transparent" hx-get="{% url 'routers-list' %}" hx-target="#randomWindow" hx-swap="outerHTML transition:true" hx-push-url="true">
+				<i id="raw-close" class="fas fa-times text-danger"></i>
+			</button>
+		</div>
+		<h4 class="ms-5 mx-auto">Edit Router</h4>
+		<form hx-post="{% url 'update-router' %}" hx-target="#randomWindow" class="ml-2">
+            {% csrf_token %}
+            <div class="d-flex justify-content-around mb-2">
+				<div class="col-md-5 ms-4">
+					<label for="router_identity" class="form-label mb-0">Routers Identity</label>
+                    <input type="text" name="id" value="{{ router.id }}" hidden>
+					<input type="text" id="router_identity" name="router_identity" class="form-control" placeholder="Enter Routers Identity" value="{{ router.identity }}" required>
+				</div>
+				<div class="col-md-5 ms-4">
+					<label for="routers_ip" class="form-label mb-0">Routers IP/Domain</label>
+					<input type="text" id="routers_ip" name="routers_ip" class="form-control" placeholder="Enter Routers IP/Domain" value="{{ router.ip }}" required>
+				</div>
+			</div>
+			<div class="d-flex justify-content-around mb-2">
+				<div class="col-md-5 ms-4">
+					<label for="router_username" class="form-label mb-0">Router Username</label>
+					<input type="text" id="router_username" name="router_username" class="form-control" placeholder="Enter router username" value="{{ router.username }}" required>
+				</div>
+				<div class="col-md-5 ms-4">
+					<label for="router_password" class="form-label mb-0">Router Password</label>
+					<input type="text" id="router_password" name="router_password" class="form-control" placeholder="Enter Router Password" value="{{ router.password }}" required>
+				</div>
+			</div>
+			<div class="d-flex justify-content-around mb-2">
+				<div class="col-md-5 ms-4">
+					<label for="router_api_port" class="form-label mb-0">Router API Port</label>
+					<input type="text" id="router_api_port" name="router_api_port" class="form-control" placeholder="Router API Port" value="{{ router.port }}" required>
+				</div>
+				<div class="col-md-5 ms-4">
+					<label for="device_value" class="form-label mb-0">Device Values</label>
+					<input type="text" id="device_value" name="device_value" class="form-control" placeholder="Enter Device Values" value="{{ router.ap_pattern }}" required>
+				</div>
+			</div>
+			<div class="d-flex justify-content-around mb-2">
+				<div class="col-md-2 ms-4 mt-4">
+					<div class="input-group mb-2">
+						<button type="submit" class="btn theme-btn form-control
+                       text-uppercase">Update</button>
+					</div>
+				</div>
+				<div class="col-md-8 ms-4"></div>
+			</div>
+		</form>
+	</div>
+	<!-- content window end -->
+</div>
+{% endblock randomwindow %}

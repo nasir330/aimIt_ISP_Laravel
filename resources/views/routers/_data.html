@@ -1,0 +1,32 @@
+<p>Hotspot Name: {{ identity }}</p>
+
+{% for resource in resources %}
+<p>
+    <span>
+        <strong> Active Users </strong>{{ online_users|length }}</span>
+    <br>
+    <span>
+        <strong> CPU Load </strong>{{ resource.cpu_load }} %</span>
+    <br>
+    <span>
+        {%for rtime in router_time %}{{ rtime.date }} {{ rtime.time }}{% endfor %}</span>
+    <br>
+    <span>
+        <strong> UP </strong>{{ resource.uptime }}</span>
+</p>
+<span class="d-flex justify-content-center">
+    <form>
+        <i class="font-icon-i fa-solid fa-square-plus mx-1" onmouseover="this.style.cursor='pointer'; this.style.color='black'" onmouseout="this.style.color='#fff'" hx-get="{% url 'router-control-menu' id %}" hx-push-url="true" hx-target="#randomWindow"></i>
+    </form>
+    <form>
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{ id }}">
+        <i class="font-icon-i fas fa-edit mx-1" onmouseover="this.style.cursor='pointer'; this.style.color='black'" onmouseout="this.style.color='#fff'" hx-post="{% url 'edit-router' %}" hx-push-url="true" hx-target="#randomWindow"></i>
+    </form>
+    <form>
+        {% csrf_token %}
+        <input name="id" value="{{ id }}" hidden>
+        <i class="font-icon-i fas fa-trash mx-1" onmouseover="this.style.cursor='pointer'; this.style.color='black'" onmouseout="this.style.color='#fff'" hx-post="{% url 'delete-router' %}" hx-push-url="true" hx-target="#randomWindow"></i>
+    </form>
+</span>
+{% endfor %}

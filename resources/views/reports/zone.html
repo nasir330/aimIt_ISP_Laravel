@@ -1,0 +1,34 @@
+{% block randomwindow %}
+<table id="orderListAble" class="text-dark no-border display nowrap" style="width: 100%">
+	<thead>
+		<tr>
+			<th data-priority="1">Manager</th>
+			<th>Zone</th>
+			<th>Total ticket</th>
+			<th>Expired ticket</th>
+			<th>Active ticket</th>
+			<th>Unused ticket</th>
+		</tr>
+	</thead>
+    {% if size != 0 %}
+        <tbody class="table-light text-center">
+        {% for i in ticketslist %}
+            <tr>
+                <td>{{i.manager}}</td>
+                <td>{{i.zone}}</td>
+                <td>{{i.totaltickets}}</td>
+                <td>{{i.expiredtickets}}</td>
+                <td>{{i.activetickets}}</td>
+                <td>{{i.unusedtickets}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    {% else %}
+        <tbody class="table-light">
+            <tr>
+                <td colspan="6" class="text-center">No Tickets are available.</td>
+            </tr>
+        </tbody>
+    {% endif %}
+</table>
+{% endblock randomwindow %}

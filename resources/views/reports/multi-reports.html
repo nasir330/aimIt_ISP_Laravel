@@ -1,0 +1,41 @@
+{% block randomwindow %}
+<div id="table-result" class="px-2">
+    <table id="nonOrderListAble" class="text-nowrap w-100">
+        <thead>
+            <tr>
+                <th data-priority="1"> SL No. </th>
+                <th>Manager</th>
+                <th>Total ticket</th>
+                <th>Expired ticket</th>
+                <th>Active ticket</th>
+                <th>Unused ticket</th>
+                <th style="border-radius:0px 5px 0px 0px;">Total Sell Amount</th>
+            </tr>
+        </thead>
+        {% if multi_reports %}
+            <tbody>
+            {% for multi_report in multi_reports %}
+                <tr>
+                    <td>
+                        <input type="checkbox" id="check-item" name="check-item">
+                        {{ forloop.counter }}
+                    </td>
+                    <td>{{ multi_report.manager_name }}</td>
+                    <td>{{ multi_report.total_tickets }}</td>
+                    <td>{{ multi_report.expired_tickets }}</td>
+                    <td>{{ multi_report.active_tickets }}</td>
+                    <td>{{ multi_report.unused_tickets }}</td>
+                    <td>{% widthratio multi_report.active_tickets 1 30 %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        {% else %}
+            <tbody>
+                <tr>
+                    <td colspan="7" class="text-center">No Tickets are available.</td>
+                </tr>
+            </tbody>
+        {% endif %}
+    </table>
+</div>
+{% endblock randomwindow %}

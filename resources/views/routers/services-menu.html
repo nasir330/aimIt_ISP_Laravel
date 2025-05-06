@@ -1,0 +1,43 @@
+{% block randomwindow %}
+<div id="randomWindow" class="random-window d-flex justify-content-center align-items-center">
+    <div class="col-6 menu-window-lg base-bg d-flex flex-column">
+        <!-- window close button -->
+        <div class="col d-flex justify-content-end">
+            <button class="close-button c-close bg-transparent" hx-get="{% url 'router-control-menu' router.id %}" hx-target="#randomWindow" hx-swap="outerHTML transition:true" hx-push-url="true">
+                <i id="raw-close" class="fas fa-times text-danger"></i>
+            </button>
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center vh-100 icon-window flex-wrap">
+            <div class="col-md-6 d-flex justify-content-center align-items-center flex-wrap">
+                <div class="text-center" hx-post="{% url 'router-restart' %}" hx-target="#randomWindow" _="on htmx:confirm(issueRequest) halt the event call Swal.fire({title: 'Are you sure?',
+                    html: 'Input <code><i><b>\'{{ router.identity }}\'</b></i></code> to Restart Router Service?',
+                    input: 'text',
+                    inputAttributes: {
+                      autocapitalize: 'off'
+                    },
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Restart it!'
+                    })
+                    if result.isConfirmed issueRequest()">
+                    <form>
+                        {% csrf_token %}
+                        <input type="text" name="id" value="{{ router.id }}" hidden>
+                        <i class="ci ci-radius-restart dash-icon"></i>
+                        <p>Router Restart</p>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center align-items-center flex-wrap">
+                <div class="text-center" hx-get="{% url 'router-schedules-list' router.id %}" hx-target="#randomWindow" hx-push-url="true">
+                    <i class="ci ci-list dash-icon"></i>
+                    <p>Schedule List</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock randomwindow %}
